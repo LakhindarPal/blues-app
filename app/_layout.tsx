@@ -5,7 +5,7 @@ import { initializeDB } from "database";
 import { useFonts } from "expo-font";
 import { SplashScreen, Stack, useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { PlaybackService, setupPlayer } from "player";
+import { initPlayer, PlaybackService } from "player";
 import { useEffect } from "react";
 import { Linking, useColorScheme } from "react-native";
 import TrackPlayer from "react-native-track-player";
@@ -32,7 +32,7 @@ export default function RootLayout() {
   // Setup player, load fonts, Hide the splash screen
   useEffect(() => {
     if (interLoaded || interError) SplashScreen.hideAsync();
-    setupPlayer();
+    initPlayer();
     initializeDB();
   }, [interLoaded, interError]);
 

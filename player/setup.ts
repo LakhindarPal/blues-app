@@ -1,7 +1,11 @@
-import TrackPlayer, { AppKilledPlaybackBehavior, Capability } from "react-native-track-player"
+import TrackPlayer, { AppKilledPlaybackBehavior, Capability } from 'react-native-track-player';
 
- export async function setupPlayer() {
-	await TrackPlayer.setupPlayer({ maxCacheSize: 1024 * 10 });
+let isPlayerInitialized = false;
+
+export async function initPlayer() {
+  if (isPlayerInitialized) return;
+
+  await TrackPlayer.setupPlayer({ maxCacheSize: 1024 * 10 });
 
 	await TrackPlayer.updateOptions({
 		android: {
@@ -12,10 +16,17 @@ import TrackPlayer, { AppKilledPlaybackBehavior, Capability } from "react-native
 			Capability.Pause,
 			Capability.SkipToNext,
 			Capability.SkipToPrevious,
-      Capability.SeekTo,
+			Capability.SeekTo,
 		],
-		compactCapabilities: [Capability.Play, Capability.Pause],
-	})
+		notificationCapabilities: [
+			Capability.Play,
+			Capability.Pause,
+			Capability.SkipToNext,
+			Capability.SkipToPrevious,
+		]
+  });
 
-	await TrackPlayer.setVolume(1)
+  await TrackPlayer.setVolume(1.0);
+
+  isPlayerInitialized = true;
 }

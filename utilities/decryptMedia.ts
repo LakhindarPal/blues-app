@@ -1,18 +1,18 @@
-import Crypto from "crypto-es";
+import * as crypto from "crypto-es";
 
 export function decryptMedia(encryptedUrl: string) {
-  const key = Crypto.enc.Utf8.parse("38346591");
+  const key = crypto.Utf8.parse("38346591");
 
-  const decrypted = Crypto.DES.decrypt(
+  const decrypted = crypto.DES.decrypt(
     {
-      ciphertext: Crypto.enc.Base64.parse(encryptedUrl),
+      ciphertext: crypto.Base64.parse(encryptedUrl),
     },
     key,
     {
-      mode: Crypto.mode.ECB,
-      padding: Crypto.pad.Pkcs7,
+      mode: crypto.ECB,
+      padding: crypto.Pkcs7,
     }
   );
 
-  return decrypted.toString(Crypto.enc.Utf8);
+  return decrypted.toString(crypto.Utf8);
 }

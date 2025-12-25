@@ -1,20 +1,18 @@
 {
   "expo": {
-    "name": "Britify",
-    "slug": "britify",
+    "name": "blues",
+    "slug": "blues",
     "version": "0.0.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "briti",
+    "scheme": "blues",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -23,7 +21,7 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "in.lpal.britify"
+      "package": "in.lpal.blues"
     },
     "web": {
       "bundler": "metro",
@@ -36,17 +34,14 @@
       [
         "expo-build-properties",
         {
-          "ios": {
-            "newArchEnabled": false
-          },
-          "android": {
-            "newArchEnabled": false
-          }
+          "ios": {},
+          "android": {}
         }
       ],
       "expo-web-browser",
       "expo-sqlite"
     ],
+    "newArchEnabled": true,
     "experiments": {
       "typedRoutes": true
     }
